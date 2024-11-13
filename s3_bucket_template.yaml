@@ -1,0 +1,19 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation Template to create an S3 bucket with versioning options
+
+Parameters:
+  EnableVersioning:
+    Type: String
+    AllowedValues:
+      - "Enabled"
+      - "Disabled"
+    Default: "Disabled"
+    Description: Set versioning status for the bucket
+
+Resources:
+  MyS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: navS3bucket
+      VersioningConfiguration:
+        Status: !Ref EnableVersioning
